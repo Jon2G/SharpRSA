@@ -1,11 +1,4 @@
-<<<<<<< Updated upstream
-﻿using System;
-using System.Collections.Generic;
-using System.Numerics;
-using System.Runtime.Serialization;
-using System.Text;
-=======
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +8,6 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
->>>>>>> Stashed changes
 
 namespace SharpRSA
 {
@@ -24,12 +16,8 @@ namespace SharpRSA
     /// </summary>
     [DataContract]
     [Serializable]
-<<<<<<< Updated upstream
-    public class KeyPair
-=======
     [DebuggerDisplay("{ToString()}")]
     public sealed class KeyPair
->>>>>>> Stashed changes
     {
         //After assignment, the keys cannot be touched.
         [DataMember]
@@ -97,7 +85,7 @@ namespace SharpRSA
         public BigInteger n { get; set; }
         [DataMember(Name = "e")]
         public int e = Constants.e;
-        
+
 
         //Optional null variable D.
         //This should never be shared as a DataMember, by principle this should not be passed over a network.
@@ -111,7 +99,7 @@ namespace SharpRSA
         public Key(BigInteger n_, KeyType type_, BigInteger d_)
         {
             //Catching edge cases for invalid input.
-            if (type_==KeyType.PRIVATE && d_<2) { throw new Exception("Constructed as private, but invalid d value provided."); }
+            if (type_ == KeyType.PRIVATE && d_ < 2) { throw new Exception("Constructed as private, but invalid d value provided."); }
 
             //Setting values.
             n = n_;
@@ -189,7 +177,7 @@ namespace SharpRSA
             return sb.ToString();
         }
     }
-    
+
     public enum KeyType
     {
         PUBLIC,
