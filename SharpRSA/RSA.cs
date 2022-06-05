@@ -115,7 +115,11 @@ namespace SharpRSA
         public static byte[] DecryptBytes(byte[] bytes, Key private_key)
         {
             //Checking that the private key is legitimate, and contains d.
+<<<<<<< Updated upstream
             if (private_key.type!=KeyType.PRIVATE)
+=======
+            if (private_key.Type != KeyType.PRIVATE)
+>>>>>>> Stashed changes
             {
                 throw new Exception("Private key given for decrypt is classified as non-private in instance.");
             }

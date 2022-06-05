@@ -1,7 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+<<<<<<< Updated upstream
     <TargetFramework>netstandard2.0</TargetFramework>
+=======
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+>>>>>>> Stashed changes
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
 
 </Project>
