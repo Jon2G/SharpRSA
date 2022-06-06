@@ -1,7 +1,5 @@
 ﻿using System;
-using System.IO;
 using System.Numerics;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace SharpRSA
@@ -163,37 +161,6 @@ namespace SharpRSA
             byte[] return_array = new byte[lengthToCopy];
             Array.Copy(plain_bytes, return_array, lengthToCopy);
             return return_array;
-        }
-        //Method to serialize a given class and then encrypt.
-        public static LockedBytes EncryptClass(object obj, Key public_)
-        {
-            BinaryFormatter bf = new BinaryFormatter();
-            byte[] b;
-            using (var memstream = new MemoryStream())
-            {
-                bf.Serialize(memstream, obj);
-                b = memstream.ToArray();
-            }
-
-            //Encrypting.
-            return new LockedBytes(b, public_);
-        }
-
-        //Method to deserialize a given class and decrypt.
-        public static T DecryptClass<T>(LockedBytes encrypted, Key private_)
-        {
-            //Decrypting bytes.
-            byte[] decrypted = encrypted.DecryptBytes(private_);
-
-            //Casting back to object.
-            using (var memStream = new MemoryStream())
-            {
-                var binForm = new BinaryFormatter();
-                memStream.Write(decrypted, 0, decrypted.Length);
-                memStream.Seek(0, SeekOrigin.Begin);
-                var obj = binForm.Deserialize(memStream);
-                return (T)obj;
-            }
         }
     }
 }
